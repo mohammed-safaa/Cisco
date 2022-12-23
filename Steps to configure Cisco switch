@@ -1,0 +1,88 @@
+
+
+Switch# configure terminal
+Switch(config)#hostname xinfinity-switch
+Switch(config)#enable secret mx123456
+
+Telnet
+Switch(config)# line vty 0 15
+
+Switch(config-line)# password mx123456
+
+Switch(config-line)# login
+
+Switch(config-line)# exit
+
+Switch(config)#
+
+
+
+Console
+Switch(config)# line console 0
+
+Switch(config-line)# password mx123456
+
+Switch(config-line)# login
+
+Switch(config-line)# exit
+
+Switch(config)#
+
+
+
+
+
+
+Switch(config)# interface vlan 1
+
+Switch(config-if)# ip address 172.1.2.12 255.255.255.0
+
+Switch(config-if)# exit
+
+Switch(config)#
+
+Step 4: Configure default gateway
+
+Switch(config)# ip default-gateway 172.1.2.1
+Switch# show ip route
+
+
+Step 6: Configure interface description
+
+Switch(config)#interface fastethernet 0/1
+Switch(config-if)#description out-users
+
+Step 8: Set Duplex mode
+
+Switch(config-if)#duplex full
+
+
+8. Disable Unused Open Ports
+
+access-switch1(config)# interface range fe 0/25-48
+
+access-switch1(config-if-range)# shutdown
+
+access-switch1(config-if-range)# exit
+
+access-switch1(config)#
+
+
+
+
+Step 9: Exit interface configuration mode
+
+Switch(config-if)#exit
+Switch(config)#
+
+
+Step 10: Exit config mode
+
+Switch(config)#exit
+Switch#
+
+Step 11: Copy the running configuration into startup configuration using below command
+
+Switch#wr
+Building configuration... [OK]
+Switch#
