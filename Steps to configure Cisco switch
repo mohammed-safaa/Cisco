@@ -35,15 +35,41 @@ Switch(config)#
 
 Switch(config)# interface vlan 1
 
+Switch(config)# name Router_Office
+
+
 Switch(config-if)# ip address 172.1.2.12 255.255.255.0
 
 Switch(config-if)# exit
 
-Switch(config)#
+
+Switch(config)# interface fastEthernet 0/35
+
+Switch(config-if)# Switchport mode access
+
+Switch(config-if)# switchport access vlan 35
+
+Switch(config-if)# exit
+
+Switch(config)# interface Gi0/1
+Switch(config-if)# description IN_Trunk
+Switch(config-if)# switchport mode trunk
+
+Switch(config-if)# exit
+
+
+Switch(config-if)# do wr
+
+
+Switch(config-if)# do show  vlan  brief
+
+
+
 
 Step 4: Configure default gateway
 
 Switch(config)# ip default-gateway 172.1.2.1
+
 Switch# show ip route
 
 
